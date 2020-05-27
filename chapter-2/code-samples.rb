@@ -1,3 +1,8 @@
+# run script with `ruby code-samples.rb -a` to run all code-breaking listings
+RUN_ALL_CODE = true if ARGV.include?("-a")
+RUN_ALL_CODE ||= false 
+
+
 # Listing 2.1, pg. 18
 
 chainring = 52
@@ -53,9 +58,10 @@ puts Gear.new(52, 11, 24, 1.25).gear_inches   #=> 125.27272727272728
 
 # Listing 2.4, pg. 21
 
-puts Gear.new(52, 11).ratio
-#=> code-samples.rb:33:in `initialize': wrong number of arguments (given 2, expected 4) (ArgumentError)
-
+if RUN_ALL_CODE
+  puts Gear.new(52, 11).ratio
+  #=> code-samples.rb:33:in `initialize': wrong number of arguments (given 2, expected 4) (ArgumentError)
+end
 
 # Listing 2.5, pg. 24
 
@@ -89,13 +95,15 @@ end
 
 # Listing 2.7, pg. 25
 
-class Gear
-  def initialize(cog)
-    @cog = cog
-  end
+# default-ish implementation via attr_reader
+def cog
+  @cog
+end
 
-  # default-ish implementation via attr_reader
-  def cog
-    @cog
-  end
+
+# Listing 2.8, pg. 25
+
+# a simple reimplementation of cog
+def cog
+  @cog * unanticipated_adjustment_factor
 end
