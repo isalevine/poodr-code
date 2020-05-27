@@ -23,3 +23,35 @@ end
 
 puts Gear.new(52, 11).ratio   #=> 4.7272727272727275
 puts Gear.new(30, 27).ratio   #=> 1.1111111111111112
+
+
+# Listing 2.3, pg. 20
+
+class Gear
+  attr_reader :chainring, :cog, :rim, :tire
+
+  def initialize(chainring, cog, rim, tire)
+    @chainring = chainring
+    @cog = cog
+    @rim = rim
+    @tire = tire
+  end
+
+  def ratio
+    chainring / cog.to_f
+  end
+
+  def gear_inches
+    # tire goes around rim twice for diameter
+    ratio * (rim + (tire * 2))
+  end
+end
+
+puts Gear.new(52, 11, 26, 1.5).gear_inches    #=> 137.0909090909091
+puts Gear.new(52, 11, 24, 1.25).gear_inches   #=> 125.27272727272728
+
+
+# Listing 2.4, pg. 21
+
+puts Gear.new(52, 11).ratio
+#=> code-samples.rb:33:in `initialize': wrong number of arguments (given 2, expected 4) (ArgumentError)
