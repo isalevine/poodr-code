@@ -104,3 +104,11 @@ end
 def cog
   @cog * unanticipated_adjustment_factor
 end
+
+
+# Listing 2.9, pg. 26
+
+# a more complex one
+def cog
+  @cog * (foo? ? bar_adjustment : baz_adjustment)
+end
