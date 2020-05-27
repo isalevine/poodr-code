@@ -69,3 +69,19 @@ class Gear
     @chainring / @cog.to_f    # <-- road to ruin
   end
 end
+
+
+# Listing 2.6, pg. 25
+
+class Gear
+  attr_reader :chainring, :cog    # <-- hide instance variables behind encapsulating methods
+
+  def initialize(chainring, cog)
+    @chainring = chainring
+    @cog = cog
+  end
+
+  def ratio
+    chainring / cog.to_f    # <-- using attr_reader methods to access instance variables
+  end
+end
