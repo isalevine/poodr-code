@@ -55,3 +55,17 @@ puts Gear.new(52, 11, 24, 1.25).gear_inches   #=> 125.27272727272728
 
 puts Gear.new(52, 11).ratio
 #=> code-samples.rb:33:in `initialize': wrong number of arguments (given 2, expected 4) (ArgumentError)
+
+
+# Listing 2.5, pg. 24
+
+class Gear
+  def initialize(chainring, cog)
+    @chainring = chainring
+    @cog = cog
+  end
+
+  def ratio
+    @chainring / @cog.to_f    # <-- road to ruin
+  end
+end
