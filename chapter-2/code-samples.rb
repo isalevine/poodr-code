@@ -1,8 +1,3 @@
-# run script with `ruby code-samples.rb -a` to run all code-breaking listings
-RUN_ALL_CODE = true if ARGV.include?("-a")
-RUN_ALL_CODE ||= false 
-
-
 # Listing 2.1, pg. 18
 
 chainring = 52
@@ -58,9 +53,11 @@ puts Gear.new(52, 11, 24, 1.25).gear_inches   #=> 125.27272727272728
 
 # Listing 2.4, pg. 21
 
-if RUN_ALL_CODE
+begin
   puts Gear.new(52, 11).ratio
   #=> code-samples.rb:33:in `initialize': wrong number of arguments (given 2, expected 4) (ArgumentError)
+rescue ArgumentError
+  puts "code-samples.rb:33:in `initialize': wrong number of arguments (given 2, expected 4) (ArgumentError)"
 end
 
 # Listing 2.5, pg. 24
