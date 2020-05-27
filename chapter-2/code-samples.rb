@@ -85,3 +85,17 @@ class Gear
     chainring / cog.to_f    # <-- using attr_reader methods to access instance variables
   end
 end
+
+
+# Listing 2.7, pg. 25
+
+class Gear
+  def initialize(cog)
+    @cog = cog
+  end
+
+  # default-ish implementation via attr_reader
+  def cog
+    @cog
+  end
+end
