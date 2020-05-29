@@ -137,3 +137,26 @@ end
 puts Blinkered.new.cog(Gear.new(54, 11))
 #=> 1: from code-samples.rb:137:in `<main>'
 #   code-samples.rb:133:in `cog': private method `cog' called for #<Gear:0x00007fe8df9df498 @chainring=54, @cog=11> (NoMethodError)
+
+
+# Listing 2.11, pg. 27
+
+class ObscuringReferences
+  attr_reader :data
+
+  def initialize(data)
+    @data = data
+  end
+
+  def diameters
+    # 0 is rim, 1 is tire
+    data.collect { |cell| cell[0] + (cell[1] * 2) }
+  end
+  # ...many other methods that index into the array
+end
+
+
+# Listing 2.12, pg. 27
+
+# rim and tire sizes (now in millimeters!) in a 2d array
+@data = [[622, 20], [622, 23], [559, 30], [559, 40]]
