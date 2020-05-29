@@ -112,3 +112,28 @@ end
 def cog
   @cog * (foo? ? bar_adjustment : baz_adjustment)
 end
+
+
+# Listing 2.10, pg. 26
+
+class Gear
+  private
+  attr_reader :chainring, :cog
+
+  public
+  def initialize(chainring, cog)
+    @chainring = chainring
+    @cog = cog
+  end
+  # ...
+end
+
+class Blinkered
+  def cog(gear)
+    gear.cog
+  end
+end
+
+puts Blinkered.new.cog(Gear.new(54, 11))
+#=> 1: from code-samples.rb:137:in `<main>'
+#   code-samples.rb:133:in `cog': private method `cog' called for #<Gear:0x00007fe8df9df498 @chainring=54, @cog=11> (NoMethodError)
