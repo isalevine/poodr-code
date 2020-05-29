@@ -160,3 +160,24 @@ end
 
 # rim and tire sizes (now in millimeters!) in a 2d array
 @data = [[622, 20], [622, 23], [559, 30], [559, 40]]
+
+
+# Listing 2.13, pg. 28
+
+class RevealingReferences
+  attr_reader :wheels
+  
+  def initialize(data)
+    @wheels = wheelify(data)
+  end
+
+  # now everyone can send rim/tire to wheel
+  Wheel = Struct.new(:rim, :tire)
+  def wheelify(data)
+    data.collect { |cell| Wheel.new(cell[0], cell[1]) }
+  end
+
+  def diameters
+    wheels.collect { |wheel| wheel.rim + (wheel.tire * 2) }
+  end
+end
