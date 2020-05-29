@@ -209,3 +209,14 @@ def gear_inches
   # tire goes around rim twice for diameter
   ratio * (rim + (tire * 2))
 end
+
+
+# Listing 2.17, pg. 31
+
+def gear_inches
+  ratio * diameter
+end
+
+def diameter
+  rim + (tire * 2)
+end
