@@ -181,3 +181,23 @@ class RevealingReferences
     wheels.collect { |wheel| wheel.rim + (wheel.tire * 2) }
   end
 end
+
+
+# Listing 2.14, pg. 29
+
+def diameters
+  wheels.collect { |wheel| wheel.rim + (wheel.tire * 2) }
+end
+
+
+# Listing 2.15, pg. 30
+
+# first - iterate over the array
+def diameters
+  wheels.collect { |wheel| diameter(wheel) }
+end
+
+# second - calculate diameter of ONE wheel
+def diameter(wheel)
+  wheel.rim + (wheel.tire * 2)
+end
