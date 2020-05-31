@@ -134,10 +134,13 @@ class Blinkered
   end
 end
 
-puts Blinkered.new.cog(Gear.new(54, 11))
-#=> 1: from code-samples.rb:137:in `<main>'
-#   code-samples.rb:133:in `cog': private method `cog' called for #<Gear:0x00007fe8df9df498 @chainring=54, @cog=11> (NoMethodError)
-
+begin
+  puts Blinkered.new.cog(Gear.new(54, 11))
+  #=> 1: from code-samples.rb:137:in `<main>'
+  #   code-samples.rb:133:in `cog': private method `cog' called for #<Gear:0x00007fe8df9df498 @chainring=54, @cog=11> (NoMethodError)
+rescue NoMethodError
+  puts "code-samples.rb:133:in `cog': private method `cog' called for #<Gear:0x00007fe8df9df498 @chainring=54, @cog=11> (NoMethodError)"
+end
 
 # Listing 2.11, pg. 27
 
@@ -247,3 +250,51 @@ class Gear
     end
   end
 end
+
+
+# Listing 2.19, pg. 34-35
+
+class Gear
+  attr_reader :chainring, :cog, :wheel
+
+  def initialize(chainring, cog, wheel = nil)
+    @chainring = chainring
+    @cog = cog
+    @wheel = wheel
+  end
+
+  def ratio
+    chainring / cog.to_f
+  end
+
+  def gear_inches
+    ratio * wheel.diameter
+  end
+end
+
+class Wheel
+  attr_reader :rim, :tire
+
+  def initialize(rim, tire)
+    @rim = rim
+    @tire = tire
+  end
+
+  def diameter
+    rim + (tire * 2)
+  end
+
+  def circumference
+    diameter * Math::PI
+  end
+end
+
+@wheel = Wheel.new(26, 1.5)
+puts @wheel.circumference
+#=> 91.106186954104
+
+puts Gear.new(52, 11, @wheel).gear_inches
+#=> 137.0909090909091
+
+puts Gear.new(52, 11).ratio
+#=> 4.7272727272727275
