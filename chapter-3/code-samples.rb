@@ -174,3 +174,58 @@ end
 def diameter
   wheel.diameter
 end
+
+
+# Listing 3.9, pg. 48
+
+class Gear
+  attr_reader :chainring, :cog, :wheel
+
+  def initialize(chainring, cog, wheel)
+    @chainring = chainring
+    @cog = cog
+    @wheel = wheel
+  end
+  # ...
+end
+
+puts Gear.new(
+  52,
+  11,
+  Wheel.new(26, 1.5)).gear_inches
+#=> 137.0909090909091
+
+
+# Listing 3.10, pg. 49
+
+# using keyword arguments
+class Gear
+  attr_reader :chainring, :cog, :wheel
+
+  def initialize(chainring:, cog:, wheel:)
+    @chainring = chainring
+    @cog = cog
+    @wheel = wheel
+  end
+  # ...
+end
+
+
+# Listing 3.11, pg. 49
+
+# pass keyword arguments as a hash
+puts Gear.new(
+  :cog => 11,
+  :chainring => 52,
+  :wheel => Wheel.new(26, 1.5)).gear_inches
+#=> 137.0909090909091
+
+
+# Listing 3.12, pg. 49
+
+# using the explicit keyword syntax
+puts Gear.new(
+  wheel: Wheel.new(26, 1.5),
+  chainring: 52,
+  cog: 11).gear_inches
+#=> 137.0909090909091
