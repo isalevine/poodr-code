@@ -127,3 +127,50 @@ end
 
 puts Gear.new(52, 11, 26, 1.5).gear_inches
 #=> 137.0909090909091
+
+
+# Listing 3.6, pg. 46
+
+# `gear_inches` method below sends `ratio` and `wheel` to `self` 
+# but sends `diameter` to `wheel`
+def gear_inches
+  ratio * wheel.diameter
+end
+
+
+# Listing 3.7, pg. 46
+
+# imagine that calculating gear_inches required far more math
+def gear_inches
+  # ...
+  # a 
+  # few 
+  # lines 
+  # of 
+  # scary 
+  # math
+  # ...
+  foo = some_intermediate_result * wheel.diameter
+  # ...
+  # more 
+  # lines 
+  # of 
+  # scary 
+  # math
+  # ...
+end
+
+
+# Listing 3.8, pg. 47
+
+# removing the external dependency (Gear -> wheel, wheel -> diameter)
+# and encapsulating it in a method of its own
+def gear_inches
+  # ...a few lines of scary math
+  foo = some_intermediate_result * diameter
+  # ...more lines of scary math
+end
+
+def diameter
+  wheel.diameter
+end
