@@ -138,10 +138,22 @@ end
 # Listing 5.5, pg. 96
 
   if preparer.kind_of?(Mechanic)
-    preparer.prepare_bicycles
+    preparer.prepare_bicycles(bicycles)
   elsif preparer.kind_of?(TripCoordinator)
     preparer.buy_food(customers)
   elsif preparer.kind_of?(Driver)
+    preparer.gas_up(vehicle)
+    preparer.fill_water_tank(vehicle)
+  end
+
+
+# Listing 5.6, pg. 97
+
+  if preparer.respond_to?(:prepare_bicycles)
+    preparer.prepare_bicycles(bicycles)
+  elsif preparer.responds_to?(:buy_food)
+    preparer.buy_food(customers)
+  elsif preparer.responds_to?(:gas_up)
     preparer.gas_up(vehicle)
     preparer.fill_water_tank(vehicle)
   end
