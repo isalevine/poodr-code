@@ -103,6 +103,20 @@ end
 
 # Listing 5.4, pg. 96
 
+# The following can be replaced by a `preparer` duck,
+# all of which respond to a `prepare_trip` method.
+
+# This shifts the responsibility of knowing what each type does
+# from Trip (which currently must know each class, and their methods)
+# to the `preparer` duck, so that only the class itself knows what
+# `prepare_trip` needs to do.
+
+# "The ability to tolerate ambiguity about the class of an object
+# is the hallmark of a confident designer. Once you begin to treat
+# your obhects as if they are defined by their behavior rather than
+# their class, you enter into a new realm of expressive flexible 
+# design." - Listing 5.1.4, pg. 94
+
 class Trip
   def prepare(preparers)
     preparers.each { |preparer|
