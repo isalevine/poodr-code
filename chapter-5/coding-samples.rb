@@ -133,3 +133,15 @@ class Trip
   end
   # ...
 end
+
+
+# Listing 5.5, pg. 96
+
+  if preparer.kind_of?(Mechanic)
+    preparer.prepare_bicycles
+  elsif preparer.kind_of?(TripCoordinator)
+    preparer.buy_food(customers)
+  elsif preparer.kind_of?(Driver)
+    preparer.gas_up(vehicle)
+    preparer.fill_water_tank(vehicle)
+  end
