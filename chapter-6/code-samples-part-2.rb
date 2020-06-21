@@ -57,4 +57,4 @@ puts road_bike.size
 
 mountain_bike = MountainBike.new(size: 'S', front_shock: 'Manitou', rear_shock: 'Fox')
 puts mountain_bike.size
-#=>
+#=> code-samples-part-2.rb:59:in `<main>': undefined method `size' for #<MountainBike:0x00007fbc41019140> (NoMethodError)
