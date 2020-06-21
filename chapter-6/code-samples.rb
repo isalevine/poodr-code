@@ -129,3 +129,23 @@ puts mountain_bike.spares
 #    :tire_size=>"23",        <- wrong!
 #    :tape_color=>nil,        <- not applicable!
 #    :front_shock=>"Manitou"}
+
+
+# Listing 6.5, pg. 119
+
+class Bicycle
+  # This class is empty except for initialize.
+  # Code has been moved to RoadBike.
+  def initialize(**opts)
+  end
+end
+
+class RoadBike < Bicycle
+  # Now a subclass of Bicycle.
+  # Contains all code from the old Bicycle class.
+end
+
+class MountainBike < Bicycle
+  # Still a subclass of Bicycle.
+  # Code has not changed.
+end
