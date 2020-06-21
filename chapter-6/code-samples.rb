@@ -140,12 +140,43 @@ class Bicycle
   end
 end
 
+
 class RoadBike < Bicycle
   # Now a subclass of Bicycle.
   # Contains all code from the old Bicycle class.
+
+  attr_reader :size, :tape_color
+
+  def initialize(**opts)
+    @size = opts[:size]
+    @tape_color = opts[:tape_color]
+  end
+
+  # every bike has the same defaults for
+  # tire and chain size
+  def spares
+    { chain: '11-speed',
+      tire_size: '23',
+      tape_color: tape_color }
+  end
+
+  # Many other methods...
 end
+
 
 class MountainBike < Bicycle
   # Still a subclass of Bicycle.
   # Code has not changed.
+
+  attr_reader :front_shock, :rear_shock
+
+  def initialize(**opts)
+    @front_shock = opts[:front_shock]
+    @rear_shock = opts[:rear_shock]
+    super
+  end
+
+  def spares
+    super.merge(front_shock: front_shock)
+  end
 end
