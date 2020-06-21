@@ -75,3 +75,20 @@ bike = Bicycle.new(
 
 puts bike.spares
 #=> {:chain=>"11-speed", :tire_size=>"23", :tape_color=>"red"}
+
+
+# Listing 6.3, pg. 115
+
+class MountainBike < Bicycle
+  attr_reader :front_shock, :rear_shock
+
+  def initialize(**opts)
+    @front_shock = opts[:front_shock]
+    @rear_shock = opts[:rear_shock]
+    super
+  end
+
+  def spares
+    super.merge(front_shock: front_shock)
+  end
+end
