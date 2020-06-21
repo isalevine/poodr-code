@@ -92,3 +92,40 @@ class MountainBike < Bicycle
     super.merge(front_shock: front_shock)
   end
 end
+
+
+# Listing 6.4, pg. 115
+
+# reset to original Bicycle class from listing 6.1
+class Bicycle
+  attr_reader :size, :tape_color
+
+  def initialize(**opts)
+    @size = opts[:size]
+    @tape_color = opts[:tape_color]
+  end
+
+  # every bike has the same defaults for
+  # tire and chain size
+  def spares
+    { chain: '11-speed',
+      tire_size: '23',
+      tape_color: tape_color }
+  end
+
+  # Many other methods...
+end
+
+mountain_bike = MountainBike.new(
+                  size: 'S', 
+                  front_shock: 'Manitou', 
+                  rear_shock: 'Fox')
+
+puts mountain_bike.size
+#=> S
+
+puts mountain_bike.spares
+#=> {:chain=>"11-speed", 
+#    :tire_size=>"23",        <- wrong!
+#    :tape_color=>nil,        <- not applicable!
+#    :front_shock=>"Manitou"}
