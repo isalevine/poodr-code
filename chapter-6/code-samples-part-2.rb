@@ -58,3 +58,24 @@ puts road_bike.size
 mountain_bike = MountainBike.new(size: 'S', front_shock: 'Manitou', rear_shock: 'Fox')
 puts mountain_bike.size
 #=> code-samples-part-2.rb:59:in `<main>': undefined method `size' for #<MountainBike:0x00007fbc41019140> (NoMethodError)
+
+
+# Listing 6.7, pg. 121
+
+class Bicycle
+  attr_reader :size       # <- promoted from RoadBike
+
+  def initialize(**opts)
+    @size = opts[:size]   # <- promoted from RoadBike
+  end
+end
+
+class RoadBike < Bicycle
+  attr_reader :tape_color
+
+  def initialize(**opts)
+    @tape_color = opts[:tape_color]
+    super   # <- RoadBike MUST send `super`
+  end
+  # ...
+end
