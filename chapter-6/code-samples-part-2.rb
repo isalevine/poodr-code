@@ -93,7 +93,7 @@ road_bike = RoadBike.new(size: 'M', tape_color: 'red')
 mountain_bike = MountainBike.new(size: 'S', front_shock: 'Manitou', rear_shock: 'Fox')
 
 puts road_bike.size
-#=>
+#=> M
 
 puts mountain_bike.size
-#=>
+#=> S
