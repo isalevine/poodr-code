@@ -55,10 +55,13 @@ road_bike = RoadBike.new(size: 'M', tape_color: 'red')
 puts road_bike.size
 #=> M
 
-mountain_bike = MountainBike.new(size: 'S', front_shock: 'Manitou', rear_shock: 'Fox')
-puts mountain_bike.size
-#=> code-samples-part-2.rb:59:in `<main>': undefined method `size' for #<MountainBike:0x00007fbc41019140> (NoMethodError)
-
+begin
+  mountain_bike = MountainBike.new(size: 'S', front_shock: 'Manitou', rear_shock: 'Fox')
+  puts mountain_bike.size
+  #=> code-samples-part-2.rb:59:in `<main>': undefined method `size' for #<MountainBike:0x00007fbc41019140> (NoMethodError)
+rescue NoMethodError
+  puts "code-samples-part-2.rb:59:in `<main>': undefined method `size' for #<MountainBike:0x00007fbc41019140> (NoMethodError)"
+end
 
 # Listing 6.7, pg. 121
 
@@ -79,3 +82,18 @@ class RoadBike < Bicycle
   end
   # ...
 end
+
+
+
+
+
+# Listing 6.8, pg. 121-122
+
+road_bike = RoadBike.new(size: 'M', tape_color: 'red')
+mountain_bike = MountainBike.new(size: 'S', front_shock: 'Manitou', rear_shock: 'Fox')
+
+puts road_bike.size
+#=>
+
+puts mountain_bike.size
+#=>
