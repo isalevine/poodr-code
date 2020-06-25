@@ -84,9 +84,6 @@ class RoadBike < Bicycle
 end
 
 
-
-
-
 # Listing 6.8, pg. 121-122
 
 road_bike = RoadBike.new(size: 'M', tape_color: 'red')
@@ -97,3 +94,15 @@ puts road_bike.size
 
 puts mountain_bike.size
 #=> S
+
+
+# Listing 6.9, pg. 123
+
+class RoadBike < Bicycle
+  # ...
+  def spares
+    { chain: '11-speed',
+      tire_size: '23',
+      tape_color: tape_color }
+  end
+end
