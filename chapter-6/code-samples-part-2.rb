@@ -126,3 +126,16 @@ begin
 rescue NoMethodError
   puts "code-samples-part-2.rb:116:in `spares': super: no superclass method `spares' for #<MountainBike:0x00007fe02183f960> (NoMethodError)"
 end
+
+
+# Listing 6.12, pg. 125
+
+class Bicycle
+  attr_reader :size
+
+  def initialize(**opts)
+    @size = opts[:size]
+    @chain = opts[:chain]
+    @tire_size = opts[:tire_size]
+  end
+end
