@@ -116,3 +116,13 @@ class MountainBike < Bicycle
     super.merge(front_shock: front_shock)
   end
 end
+
+
+# Listing 6.11, pg. 124
+
+begin
+  puts mountain_bike.spares
+  #=> code-samples-part-2.rb:116:in `spares': super: no superclass method `spares' for #<MountainBike:0x00007fe02183f960> (NoMethodError)
+rescue NoMethodError
+  puts "code-samples-part-2.rb:116:in `spares': super: no superclass method `spares' for #<MountainBike:0x00007fe02183f960> (NoMethodError)"
+end
