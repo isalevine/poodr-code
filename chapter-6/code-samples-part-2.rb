@@ -106,3 +106,13 @@ class RoadBike < Bicycle
       tape_color: tape_color }
   end
 end
+
+
+# Listing 6.10, pg. 124
+
+class MountainBike < Bicycle
+  # ...
+  def spares
+    super.merge(front_shock: front_shock)
+  end
+end
