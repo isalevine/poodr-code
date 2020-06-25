@@ -139,3 +139,35 @@ class Bicycle
     @tire_size = opts[:tire_size]
   end
 end
+
+
+# Listing 6.13, pg. 126
+
+class Bicycle
+  attr_reader :size, :chain, :tire_size
+
+  def initialize(**opts)
+    @size = opts[:size]
+    @chain = opts[:chain] || default_chain
+    @tire_size = opts[:tire_size] || default_tire_size
+  end
+
+  def default_chain       # <- common default
+    "11-speed"
+  end
+  # ...
+end
+
+class RoadBike < Bicycle
+  # ...
+  def default_tire_size   # <- subclass default
+    "23"
+  end
+end
+
+class MountainBike < Bicycle
+  # ...
+  def default_tire_size   # <- subclass default
+    "2.1"
+  end
+end
