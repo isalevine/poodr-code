@@ -189,3 +189,20 @@ mountain_bike = MountainBike.new(
 
 puts mountain_bike.tire_size    #=> 2.1
 puts mountain_bike.chain        #=> 11-speed
+
+
+# Listing 6.15, pg. 127
+
+class RecumbentBike < Bicycle
+  def default_chain
+    '10-speed'
+  end
+end
+
+begin
+  bent = RecumbentBike.new(size: 'L')
+  #=> code-samples-part-2.rb:152:in `initialize': undefined local variable or method `default_tire_size' 
+  #=> for #<RecumbentBike:0x00007f8026984d30 @size="L", @chain="10-speed"> (NameError)
+rescue NameError
+  puts "code-samples-part-2.rb:152:in `initialize': undefined local variable or method `default_tire_size' for #<RecumbentBike:0x00007f8026984d30 @size=\"L\", @chain=\"10-speed\"> (NameError)"
+end
