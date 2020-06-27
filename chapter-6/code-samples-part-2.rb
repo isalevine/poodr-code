@@ -226,3 +226,14 @@ begin
 rescue NotImplementedError
   puts "code-samples-part-2.rb:216:in `default_tire_size': NotImplementedError (NotImplementedError)"
 end
+
+
+# Listing 6.18, pg. 128-129
+
+class Bicycle
+  # ...
+  def default_tire_size
+    raise NotImplementedError,
+          "#{self.class} should have implemented..."
+  end
+end
