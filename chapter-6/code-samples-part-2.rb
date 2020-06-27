@@ -216,3 +216,13 @@ class Bicycle
     raise NotImplementedError
   end
 end
+
+
+# Listing 6.17, pg. 128
+
+begin
+  bent = RecumbentBike.new(size: "L")
+  #=> code-samples-part-2.rb:216:in `default_tire_size': NotImplementedError (NotImplementedError)
+rescue NotImplementedError
+  puts "code-samples-part-2.rb:216:in `default_tire_size': NotImplementedError (NotImplementedError)"
+end
