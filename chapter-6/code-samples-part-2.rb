@@ -206,3 +206,13 @@ begin
 rescue NameError
   puts "code-samples-part-2.rb:152:in `initialize': undefined local variable or method `default_tire_size' for #<RecumbentBike:0x00007f8026984d30 @size=\"L\", @chain=\"10-speed\"> (NameError)"
 end
+
+
+# Listing 6.16, pg. 128
+
+class Bicycle
+  # ...
+  def default_tire_size
+    raise NotImplementedError
+  end
+end
