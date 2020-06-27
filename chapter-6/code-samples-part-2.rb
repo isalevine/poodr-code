@@ -237,3 +237,13 @@ class Bicycle
           "#{self.class} should have implemented..."
   end
 end
+
+
+# Listing 6.19, pg. 129
+
+begin
+  bent = RecumbentBike.new(size: "L")
+  #=> code-samples-part-2.rb:236:in `default_tire_size': RecumbentBike should have implemented... (NotImplementedError)
+rescue NotImplementedError
+  puts "code-samples-part-2.rb:236:in `default_tire_size': RecumbentBike should have implemented... (NotImplementedError)"
+end  
