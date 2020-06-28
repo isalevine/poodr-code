@@ -247,3 +247,15 @@ begin
 rescue NotImplementedError
   puts "code-samples-part-2.rb:236:in `default_tire_size': RecumbentBike should have implemented... (NotImplementedError)"
 end  
+
+
+# Listing 6.20, pg. 130
+
+class RoadBike < Bicycle
+  # ...
+  def spares
+    { chain: '11-speed',
+      tire_size: '23',
+      tape_color: tape_color }
+  end
+end
