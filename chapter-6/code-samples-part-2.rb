@@ -269,3 +269,14 @@ class MountainBike < Bicycle
     super.merge(front_shock: front_shock)
   end
 end
+
+
+# Listing 6.22, pg. 130-131
+
+class Bicycle
+  # ...
+  def spares
+    { tire_size: tire_size,
+      chain: chain }
+  end
+end
