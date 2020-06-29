@@ -343,3 +343,32 @@ class MountainBike < Bicycle
     "2.1"
   end
 end
+
+
+# Listing 6.24, pg. 133
+
+class RecumbentBike < Bicycle
+  attr_reader :flag
+
+  def initialize(**opts)
+    @flag = opts[:flag]     # forgot to send `super`
+  end
+
+  def spares
+    super.merge(flag: flag)
+  end
+
+  def default_chain
+    '10-speed'
+  end
+
+  def default_tire_size
+    '28'
+  end
+end
+
+bent = RecumbentBike.new(flag: 'tall and orange')
+puts bent.spares
+#=> {:tire_size=>nil,     <- didn't get initialized
+#=>  :chain=>nil, 
+#=>  :flag=>"tall and orange"}
