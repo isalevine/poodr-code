@@ -372,3 +372,30 @@ puts bent.spares
 #=> {:tire_size=>nil,     <- didn't get initialized
 #=>  :chain=>nil, 
 #=>  :flag=>"tall and orange"}
+
+
+# Listing 6.25, pg. 134-135
+
+class Bicycle
+  attr_reader :size, :chain, :tire_size
+
+  def initialize(**opts)
+    @size = opts[:size]
+    @chain = opts[:chain] || default_chain
+    @tire_size = opts[:tire_size] || default_tire_size
+
+    post_initialize(opts)             # Bicycle both sends...
+  end
+
+  def post_initialize                 # ...and _implements_ this...
+  end
+  # ...
+end
+
+class RoadBike < Bicycle
+  attr_reader :tape_color
+
+  def post_initialize(opts)           # ...and RoadBike can optionally override it
+    @tape_color = opts[:tape_color]
+  end
+end
