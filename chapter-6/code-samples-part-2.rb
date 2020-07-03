@@ -505,3 +505,30 @@ mountain_bike = MountainBike.new(size: 'S', front_shock: 'Manitou', rear_shock: 
 puts mountain_bike.tire_size  #=> 2.1
 puts mountain_bike.chain      #=> 11-speed
 puts mountain_bike.spares     #=> {:tire_size=>"2.1", :chain=>"11-speed", :front_shock=>"Manitou"}
+
+
+# Listing 6.28, pg. 138-139
+
+class RecumbentBike < Bicycle
+  attr_reader :flag
+
+  def post_initialize(opts)
+    @flag = opts[:flag]
+  end
+
+  def local_spares
+    { flag: flag }
+  end
+
+  def default_chain
+    "10-speed"
+  end
+
+  def default_tire_size
+    "28"
+  end
+end
+
+bent = RecumbentBike.new(size: 'M', flag: 'tall and orange')
+
+puts bent.spares    #=> return is not as expected -- chain and tire_size are nil ??
