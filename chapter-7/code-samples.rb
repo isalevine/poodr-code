@@ -13,3 +13,13 @@ class Schedule
     # ...
   end
 end
+
+
+# Listing 7.2, pg. 148
+
+class Schedule
+  def scheduled?(schedulable, starting, ending)\
+    puts "This #{schedulable.class} is available #{starting} - #{ending}"
+    false
+  end
+end
