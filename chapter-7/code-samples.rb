@@ -63,3 +63,27 @@ b = Bicycle.new
 puts b.schedulable?(starting, ending)
 #=> This Bicycle is available 2019-09-03 - 2019-09-10
 #=> true
+
+
+# Listing 7.4, pg. 150
+
+module Schedulable
+  attr_writer :schedule
+
+  def schedule
+    @schedule ||= Schedule.new
+  end
+
+  def schedulable?(starting, ending)
+    !scheduled?(starting - lead_days, ending)
+  end
+
+  def scheduled?(starting, ending)
+    schedule.scheduled?(self, starting, ending)
+  end
+
+  # includers may override
+  def lead_days
+    0
+  end
+end
