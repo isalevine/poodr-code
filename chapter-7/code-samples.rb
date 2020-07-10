@@ -108,3 +108,34 @@ b = Bicycle.new
 puts b.schedulable?(starting, ending)
 #=> This Bicycle is available 2019-09-03 - 2019-09-10
 #=> true
+
+
+# Listing 7.6, pg. 152-153
+
+class Vehicle
+  include Schedulable
+  
+  def lead_days
+    3
+  end
+  # ...
+end
+
+class Mechanic
+  include Schedulable
+
+  def lead_days
+    4
+  end
+  # ...
+end
+
+v = Vehicle.new
+puts v.schedulable?(starting, ending)
+#=> This Vehicle is available 2019-09-01 - 2019-09-10
+#=> true
+
+m = Mechanic.new
+puts m.schedulable?(starting, ending)
+#=> This Mechanic is available 2019-08-31 - 2019-09-10
+#=> true
