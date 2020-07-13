@@ -27,7 +27,7 @@ class Parts
 
   def spares
     { chain: chain,
-      tire_size: sire_size }.merge(local_spares)
+      tire_size: tire_size }.merge(local_spares)
   end
 
   def default_tire_size
@@ -82,3 +82,18 @@ class MountainBikeParts < Parts
     "2.1"
   end
 end
+
+
+# Listing 8.3, pg. 167
+
+road_bike = Bicycle.new(size: "L", parts: RoadBikeParts.new(tape_color: "red"))
+puts road_bike.size
+#=> L
+puts road_bike.spares
+#=> {:chain=>"11-speed", :tire_size=>"23", :tape_color=>"red"}
+
+mountain_bike = Bicycle.new(size: "L", parts: MountainBikeParts.new(front_shock: "Manitou", rear_shock: "Fox"))
+puts mountain_bike.size
+#=> L
+puts mountain_bike.spares
+#=> {:chain=>"11-speed", :tire_size=>"2.1", :front_shock=>"Manitou"}
