@@ -97,3 +97,43 @@ puts mountain_bike.size
 #=> L
 puts mountain_bike.spares
 #=> {:chain=>"11-speed", :tire_size=>"2.1", :front_shock=>"Manitou"}
+
+
+# Listing 8.4, pg. 169-170
+
+class Bicycle
+  attr_reader :size, :parts
+
+  def initialize(size:, parts:)
+    @size = size
+    @parts = parts
+  end
+
+  def spares
+    parts.spares
+  end
+end
+
+
+class Parts
+  attr_reader :parts
+  
+  def initialize(parts)
+    @parts = parts
+  end
+
+  def spares
+    parts.select { |part| part.need_spares }
+  end
+end
+
+
+class Part
+  attr_reader :name, :description, :needs_spares
+
+  def initialize(name:, description:, needs_spares: true)
+    @name = name
+    @description = description
+    @needs_spares = needs_spares
+  end
+end
