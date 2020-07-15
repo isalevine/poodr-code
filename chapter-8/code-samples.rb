@@ -147,3 +147,8 @@ tape = Part.new(name: "tape_color", description: "red")
 mountain_tire = Part.new(name: "tire_size", description: "2.1")
 rear_shock = Part.new(name: "rear_shock", description: "Fox", needs_spare: false)
 front_shock = Part.new(name: "front_shock", description: "Manitou")
+
+
+# Listing 8.6, pg. 171
+
+road_bike_parts = Parts.new([chain, road_tire, tape])
