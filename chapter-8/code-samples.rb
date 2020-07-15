@@ -137,3 +137,13 @@ class Part
     @needs_spares = needs_spares
   end
 end
+
+
+# Listing 8.5, pg. 170-171
+
+chain = Part.new(name: "chain", description: "11-speed")
+road_tire = Part.new(name: "tire_size", description: "23")
+tape = Part.new(name: "tape_color", description: "red")
+mountain_tire = Part.new(name: "tire_size", description: "2.1")
+rear_shock = Part.new(name: "rear_shock", description: "Fox", needs_spare: false)
+front_shock = Part.new(name: "front_shock", description: "Manitou")
