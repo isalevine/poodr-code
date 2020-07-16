@@ -152,3 +152,5 @@ front_shock = Part.new(name: "front_shock", description: "Manitou")
 # Listing 8.6, pg. 171
 
 road_bike_parts = Parts.new([chain, road_tire, tape])
+
+mountain_bike_parts = Parts.new([chain, mountain_tire, front_shock])
