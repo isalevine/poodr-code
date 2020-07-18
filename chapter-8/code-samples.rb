@@ -123,7 +123,7 @@ class Parts
   end
 
   def spares
-    parts.select { |part| part.need_spares }
+    parts.select { |part| part.needs_spares }
   end
 end
 
@@ -145,7 +145,7 @@ chain = Part.new(name: "chain", description: "11-speed")
 road_tire = Part.new(name: "tire_size", description: "23")
 tape = Part.new(name: "tape_color", description: "red")
 mountain_tire = Part.new(name: "tire_size", description: "2.1")
-rear_shock = Part.new(name: "rear_shock", description: "Fox", needs_spare: false)
+rear_shock = Part.new(name: "rear_shock", description: "Fox", needs_spares: false)
 front_shock = Part.new(name: "front_shock", description: "Manitou")
 
 
@@ -154,3 +154,27 @@ front_shock = Part.new(name: "front_shock", description: "Manitou")
 road_bike_parts = Parts.new([chain, road_tire, tape])
 
 mountain_bike_parts = Parts.new([chain, mountain_tire, front_shock, rear_shock])
+
+
+# Listing 8.7, pg. 171-172
+
+road_bike = Bicycle.new(size: "L", parts: Parts.new([chain, road_tire, tape]))
+
+puts road_bike.size
+#=> L
+
+puts road_bike.spares.inspect
+#=> [ #<Part:0x00007fee3f1095c0 @name="chain", @description="11-speed", @needs_spares=true>, 
+#=>   #<Part:0x00007fee3f1094f8 @name="tire_size", @description="23", @needs_spares=true>, 
+#=>   #<Part:0x00007fee3f109430 @name="tape_color", @description="red", @needs_spares=true> ]
+
+
+mountain_bike = Bicycle.new(size: "L", parts: Parts.new([chain, mountain_tire, front_shock, rear_shock]))
+
+puts mountain_bike.size
+#=> L
+
+puts mountain_bike.spares.inspect
+#=> [ #<Part:0x00007ffd0692d3e8 @name="chain", @description="11-speed", @needs_spares=true>, 
+#=>   #<Part:0x00007ffd0692d190 @name="tire_size", @description="2.1", @needs_spares=true>, 
+#=>   #<Part:0x00007ffd0692d000 @name="front_shock", @description="Manitou", @needs_spares=true> ]
