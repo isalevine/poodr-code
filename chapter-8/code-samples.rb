@@ -178,3 +178,16 @@ puts mountain_bike.spares.inspect
 #=> [ #<Part:0x00007ffd0692d3e8 @name="chain", @description="11-speed", @needs_spares=true>, 
 #=>   #<Part:0x00007ffd0692d190 @name="tire_size", @description="2.1", @needs_spares=true>, 
 #=>   #<Part:0x00007ffd0692d000 @name="front_shock", @description="Manitou", @needs_spares=true> ]
+
+
+# Listing 8.8, pg. 173
+
+puts mountain_bike.spares.size
+#=> 3
+
+begin
+  puts mountain_bike.parts.size
+  #=> code-samples.rb:188:in `<main>': undefined method `size' for #<Parts:0x00007fbb97994648> (NoMethodError)
+rescue NoMethodError
+  puts "code-samples.rb:188:in `<main>': undefined method `size' for #<Parts:0x00007fbb97994648> (NoMethodError)"
+end
