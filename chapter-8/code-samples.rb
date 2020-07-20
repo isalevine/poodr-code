@@ -191,3 +191,10 @@ begin
 rescue NoMethodError
   puts "code-samples.rb:188:in `<main>': undefined method `size' for #<Parts:0x00007fbb97994648> (NoMethodError)"
 end
+
+
+# Listing 8.9, pg. 173
+
+  def size
+    parts.size
+  end
