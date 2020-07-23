@@ -1,11 +1,3 @@
-# Listing 8.9, pg. 173
-
-# code within Parts
-  def size
-    parts.size
-  end
-
-
 # Listing 8.10, pg. 173
 
 class Parts < Array
