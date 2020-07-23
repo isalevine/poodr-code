@@ -198,12 +198,4 @@ end
   def size
     parts.size
   end
-
- 
-# Listing 8.10, pg. 173
-
-class Parts < Array
-  def spares
-    select { |part| part.needs_spare }
-  end
-end
+  
