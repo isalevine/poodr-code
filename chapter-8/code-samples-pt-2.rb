@@ -66,3 +66,22 @@ begin
 rescue NoMethodError
   puts "code-samples-pt-2.rb:73:in `<main>': undefined method `spares' for #<Array:0x00007fa4cb098540> (NoMethodError)"
 end
+
+
+# Listing 8.12, pg. 175
+
+require 'forwardable'
+
+class Parts
+  extend Forwardable
+  def_delegators :@parts, :size, :each
+  include Enumerable
+
+  def initialize(parts)
+    @parts = parts
+  end
+
+  def spares
+    select { |part| part.needs_spare }
+  end
+end
