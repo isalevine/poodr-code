@@ -85,3 +85,18 @@ class Parts
     select { |part| part.needs_spare }
   end
 end
+
+
+# Listing 8.13, pg. 176
+
+road_bike = Bicycle.new(size: "L", parts: Parts.new([chain, road_tire, tape]))
+mountain_bike = Bicycle.new(size: "L", parts: Parts.new([chain, mountain_tire, front_shock, rear_shock]))
+
+puts mountain_bike.spares.size    #=> 0   <- output should be 3 according to book!!
+puts mountain_bike.parts.size     #=> 4
+
+puts mountain_bike.parts + road_bike.parts
+#=> no output   <- should return a NoMethodError for class Parts on `+`
+
+# using byebug, it appears that neither the mountain_bike nor road_bike Bicycle instances
+# keep their passed-in Part instances in their `parts` attribute -- `parts` is [] instead!!
