@@ -100,3 +100,18 @@ puts mountain_bike.parts + road_bike.parts
 
 # using byebug, it appears that neither the mountain_bike nor road_bike Bicycle instances
 # keep their passed-in Part instances in their `parts` attribute -- `parts` is [] instead!!
+
+
+# Listing 8.14, pg. 177
+
+road_config = 
+  [['chain', '11-speed'],
+   ['tire_size', '23'],
+   ['tape_color', 'red']]
+
+mountain_config = 
+  [['chain', '11-speed'],
+   ['tire_size', '2.1'],
+   ['front_shock', 'Manitou'],
+   ['rear_shock', 'Fox', false]]
+   
