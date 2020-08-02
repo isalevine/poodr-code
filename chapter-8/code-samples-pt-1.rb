@@ -123,18 +123,18 @@ class Parts
   end
 
   def spares
-    parts.select { |part| part.needs_spares }
+    parts.select { |part| part.needs_spare }
   end
 end
 
 
 class Part
-  attr_reader :name, :description, :needs_spares
+  attr_reader :name, :description, :needs_spare
 
-  def initialize(name:, description:, needs_spares: true)
+  def initialize(name:, description:, needs_spare: true)
     @name = name
     @description = description
-    @needs_spares = needs_spares
+    @needs_spare = needs_spare
   end
 end
 
@@ -145,7 +145,7 @@ chain = Part.new(name: "chain", description: "11-speed")
 road_tire = Part.new(name: "tire_size", description: "23")
 tape = Part.new(name: "tape_color", description: "red")
 mountain_tire = Part.new(name: "tire_size", description: "2.1")
-rear_shock = Part.new(name: "rear_shock", description: "Fox", needs_spares: false)
+rear_shock = Part.new(name: "rear_shock", description: "Fox", needs_spare: false)
 front_shock = Part.new(name: "front_shock", description: "Manitou")
 
 
@@ -164,9 +164,9 @@ puts road_bike.size
 #=> L
 
 puts road_bike.spares.inspect
-#=> [ #<Part:0x00007fee3f1095c0 @name="chain", @description="11-speed", @needs_spares=true>, 
-#=>   #<Part:0x00007fee3f1094f8 @name="tire_size", @description="23", @needs_spares=true>, 
-#=>   #<Part:0x00007fee3f109430 @name="tape_color", @description="red", @needs_spares=true> ]
+#=> [ #<Part:0x00007fee3f1095c0 @name="chain", @description="11-speed", @needs_spare=true>, 
+#=>   #<Part:0x00007fee3f1094f8 @name="tire_size", @description="23", @needs_spare=true>, 
+#=>   #<Part:0x00007fee3f109430 @name="tape_color", @description="red", @needs_spare=true> ]
 
 
 mountain_bike = Bicycle.new(size: "L", parts: Parts.new([chain, mountain_tire, front_shock, rear_shock]))
@@ -175,9 +175,9 @@ puts mountain_bike.size
 #=> L
 
 puts mountain_bike.spares.inspect
-#=> [ #<Part:0x00007ffd0692d3e8 @name="chain", @description="11-speed", @needs_spares=true>, 
-#=>   #<Part:0x00007ffd0692d190 @name="tire_size", @description="2.1", @needs_spares=true>, 
-#=>   #<Part:0x00007ffd0692d000 @name="front_shock", @description="Manitou", @needs_spares=true> ]
+#=> [ #<Part:0x00007ffd0692d3e8 @name="chain", @description="11-speed", @needs_spare=true>, 
+#=>   #<Part:0x00007ffd0692d190 @name="tire_size", @description="2.1", @needs_spare=true>, 
+#=>   #<Part:0x00007ffd0692d000 @name="front_shock", @description="Manitou", @needs_spare=true> ]
 
 
 # Listing 8.8, pg. 173

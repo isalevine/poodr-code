@@ -23,12 +23,12 @@ class Bicycle
 end
 
 class Part
-  attr_reader :name, :description, :needs_spares
+  attr_reader :name, :description, :needs_spare
 
-  def initialize(name:, description:, needs_spares: true)
+  def initialize(name:, description:, needs_spare: true)
     @name = name
     @description = description
-    @needs_spares = needs_spares
+    @needs_spare = needs_spare
   end
 end
 
@@ -36,7 +36,7 @@ chain = Part.new(name: "chain", description: "11-speed")
 road_tire = Part.new(name: "tire_size", description: "23")
 tape = Part.new(name: "tape_color", description: "red")
 mountain_tire = Part.new(name: "tire_size", description: "2.1")
-rear_shock = Part.new(name: "rear_shock", description: "Fox", needs_spares: false)
+rear_shock = Part.new(name: "rear_shock", description: "Fox", needs_spare: false)
 front_shock = Part.new(name: "front_shock", description: "Manitou")
 
 road_bike_parts = Parts.new([chain, road_tire, tape])
@@ -131,3 +131,12 @@ module PartsFactory
     )
   end
 end
+
+
+# Listing 8.16, pg. 178-179
+
+puts PartsFactory.build(config: road_config).inspect
+#=> []    <- same issue as output in Listing 8.13, this should be a Parts instance containing a bunch of Part instances!
+
+puts PartsFactory.build(config: mountain_config).inspect
+#=> []    <- same issue as output in Listing 8.13, this should be a Parts instance containing a bunch of Part instances!
