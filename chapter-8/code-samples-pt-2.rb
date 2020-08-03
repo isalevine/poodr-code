@@ -140,3 +140,16 @@ puts PartsFactory.build(config: road_config).inspect
 
 puts PartsFactory.build(config: mountain_config).inspect
 #=> []    <- same issue as output in Listing 8.13, this should be a Parts instance containing a bunch of Part instances!
+
+
+# Listing 8.17, pg. 179
+
+class Part
+  attr_reader :name, :description, :needs_spare
+
+  def initialize(name:, description:, needs_spare: true)
+    @name = name
+    @description = description
+    @needs_spare = needs_spare
+  end
+end
