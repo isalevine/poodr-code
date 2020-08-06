@@ -172,3 +172,14 @@ module PartsFactory
       needs_spare: part_config.fetch(2, true))
   end
 end
+
+
+# Listing 8.19, pg. 180-181
+
+mountain_bike = Bicycle.new(size: 'L', parts: PartsFactory.build(config: mountain_config))
+
+puts mountain_bike.spares.class
+#=> Array
+
+puts mountain_bike.spares
+#=> NO OUTPUT...should be a list of OpenStructs output from PartsFactory.build...
