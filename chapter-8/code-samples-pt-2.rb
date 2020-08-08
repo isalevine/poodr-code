@@ -1,3 +1,5 @@
+require 'byebug'
+
 # Listing 8.10, pg. 173
 
 class Parts < Array
@@ -221,7 +223,7 @@ require 'ostruct'
 module PartsFactory
   def self.build(config:, parts_class: Parts)
     parts_class.new(
-      config.collect {|part_config| 
+      config.map {|part_config| 
         create_part(part_config)})
   end
 
@@ -244,3 +246,19 @@ mountain_config = [
   ['front_shock', 'Manitou'],
   ['rear_shock', 'Fox', false]]
   
+
+# Listing 8.21, pg. 183
+
+road_bike = Bicycle.new(
+  size: 'L',
+  parts: PartsFactory.build(config: road_config))
+
+puts road_bike.spares
+#=> NO OUTPUT...should be a list of OpenStructs output from PartsFactory.build... (same as Listing 8.19)
+
+mountain_bike = Bicycle.new(
+  size: 'L',
+  parts: PartsFactory.build(config: mountain_config))
+
+puts mountain_bike.spares
+#=> NO OUTPUT...should be a list of OpenStructs output from PartsFactory.build...
