@@ -262,3 +262,18 @@ mountain_bike = Bicycle.new(
 
 puts mountain_bike.spares
 #=> NO OUTPUT...should be a list of OpenStructs output from PartsFactory.build...
+
+
+# Listing 8.22, pg. 184
+
+recumbent_config = [
+  ['chain', '9-speed'],
+  ['tire_size', '28'],
+  ['flag', 'tall and orange']]
+
+recumbent_bike = Bicycle.new(
+  size: 'L',
+  parts: PartsFactory.build(config: recumbent_config))
+
+puts recumbent_bike.spares
+#=> NO OUTPUT...should be a list of OpenStructs output from PartsFactory.build... (same as Listing 8.19)
