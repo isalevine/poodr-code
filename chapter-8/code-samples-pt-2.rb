@@ -1,5 +1,3 @@
-require 'byebug'
-
 # Listing 8.10, pg. 173
 
 class Parts < Array
